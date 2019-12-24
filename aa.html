@@ -1,0 +1,239 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="/imgs/box.ico?12222" type="image/x-icon">
+<link rel="icon" href="/imgs/box.ico?222221" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="/css/toto/common.css?17051022" />
+
+<!-- jquery begin -->
+<script type="text/javascript" src="/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery.getscrollbarwidth.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery.hasscrollbar.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery.random.js"></script>
+<script type="text/javascript" src="/js/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="/js/jquery/ui/i18n/jquery.ui.datepicker-ko.js"></script>
+
+
+<script type="text/javascript" src="/js/toto/common1.js"></script>
+<script type="text/javascript" src="/js/toto/join1.js?12"></script>
+<script type="text/javascript" src="/js/toto/browser_detect.js"></script>
+<script type="text/javascript" src="/js/toto/detect_right_click.js"></script> <!-- 우클릭 방지 -->
+
+<title> ANN </title>
+<style>
+	body {background:#111 url("/imgs/main_bg2.jpg?122") no-repeat; background-size:100% 100%; overflow-y:hidden;}
+	#block_tags {display:none;}
+	.layout_fix {max-width:800px; position:relative; margin:20px auto; background:#000 url("/imgs/join_box_bg.png?211") no-repeat; padding:30px 50px;} /* 컨첸츠 레이아웃 전체값 */
+	body>.header .fixed_top {
+		position:fixed;
+		width:100%;
+		z-index:10;
+		background-color: #343434;
+		height:100px;
+	}
+
+	body>.header .top {
+		width: 1300px;
+		height: 55px;
+		margin: 0 auto;
+		font-size: 13px;
+		cursor: default;
+	}
+
+
+
+	body>.header .top .main_logo {
+		background-image: url('/imgs/top/logo2.png');
+		width: 159px;
+		height: 41px;
+		margin-left: 30px;
+		margin-top: 26px;
+		margin-bottom: 5px;
+	}
+
+	body>.header .top .partner {
+		height: 21px;
+		width: 62px;
+		line-height: 21px;
+		border: 2px solid #fee891;
+		color: #fee891;
+		font-family: 'Nanum Gothic';
+		font-weight: bold;
+		font-size: 14px;
+		text-align: center;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	body>.header .top .center{
+		text-align: center;
+	}
+
+	body>.header .top .center>div {
+		display: inline-block;
+	/*	margin-left: 5px;
+		margin-right: 5px;*/
+	}
+
+	body>.header .top .right {
+		float: right;
+	}
+
+	body>.header .top .right #mynickname {
+		cursor: pointer;
+		height: none;
+	}
+
+	body>.header .top .right #mymessage {
+		cursor: pointer;
+	}
+
+	body>.header .top .right #mypoint {
+		cursor: pointer;
+	}
+
+	body>.header .top .right #logout {
+		cursor: pointer;
+	}
+
+	@media screen and (max-width : 768px) {
+		body {width:100%; background:#000; overflow-y:scroll !important; overflow-x:hidden;} 
+		.sub_title {width:100px !important; font-size:12px !important; float:none !important;}
+		input {width:120px !important; font-size:12px !important; float:left !important;}
+		select {width:80px !important; font-size:12px !important;}
+		.layout_fix {width:100% !important; max-width:100% !important; background:none; padding:0 18px;}
+		.logo {margin-bottom:10px !important; padding-bottom:5px !important;}
+		.logo img {width:100px !important;}
+		.user_info .text {clear:both; display:block !important; width:100%;}
+		.pw_lost_answer {display:block !important; border-left:0 !important; padding-left:0 !important; margin-top:10px;}
+		.bt_wrap .cancel {margin-top:10px;}
+		.left {text-align:center;}
+		.substance {display:none;}
+		.notice_title {font-size:15px !important;}
+		#user_hp2,#user_hp3 {width:50px !important;}
+		body>.contents .user_info .right>div {width:100%;}
+		.bt_wrap {width:250px !important; margin:0 auto;}
+		.bt_wrap div {float:default !important; clear:both; width:250px !important;}
+		.bt_wrap .cancel {margin-left:0 !important;}
+		.pw_lost_question {clear:both; overflow:hidden;}
+		.pw_lost_question select {width:100% !important;}
+		.pw_lost_answer {clear:both; overflow:hidden;}
+		.pw_lost_answer input {width:100% !important;}
+	}
+	.logo {text-align:center; padding-bottom:30px;}
+	.logo img {width:186px;}
+	.id_wrap,.pw_wrap,.nick_wrap,.hp_wrap,.pw_lost_wrap,.bank_wrap,.banknumber_wrap,.bankowner_wrap,.exchangepw_wrap {overflow:hidden; margin-bottom:10px;}
+	.sub_title {float:left;width:130px;font-weight:bold;}
+	.graytext {float:left;}
+	input {float:left; width:180px; background:#fff; height:34px; padding:0 10px; border:0; outline:none; border-radius:2px;}
+	select {float:left; margin-right:10px; width:200px; background:#fff; height:34px; padding:0 10px; border:0; outline:none; border-radius:2px;}
+	.overlap {float:left; cursor:pointer; font-size:13px; margin-left:10px;height:34px; line-height:34px; width:80px; text-align:center; font-weight:bold; background:linear-gradient( to top, #23221f, #7a7977 ); border-radius:2px;}
+	.text {float:left; color:#ddd; font-size:12px; line-height:34px; margin-left:10px; text-decoration:underline;} 
+	.substance {line-height:30px; font-size:15px; font-weight:bold; margin-top:30px; color:#ffcc00}
+	.bt_wrap {overflow:hidden; margin:30px auto; width:410px;}
+	.bt_wrap div {cursor:pointer; float:left; text-align:center; width:200px; height:40px; line-height:40px; color:#000; font-weight:bold; font-size:17px; margin:0 auto; background:linear-gradient( to top, #e6cc63, #c2a531, #e7da92 ); border-radius:2px;}
+	.bt_wrap .cancel {background:linear-gradient( to top, #23221f, #7a7977 ); color:#999; margin-left:10px;}
+</style>
+</head>
+
+<body>
+<div class="layout_fix">
+<div class="header">
+	<div class="logo"><img src="/imgs/logo.png?21" /></div>
+</div>
+
+	<div class="contents">
+		
+		<input type="hidden" id="invitaiton_code" name="invitation_code" value="">
+		<span id='block_tags'>아르망디,admin,manager,test,아르망도,아르만디,어드민,관리인,관리자,운영자,운영진,운영좌,운영쥔,쥔장,사이트주인,테스트,시스템,관리인,주인장</span>
+		<div class="substance" style="text-align:center; font-size:16px;  padding:30px 0; display:none;">
+			박스에 오신것을 진심으로 환영합니다.<br>
+			박스에서는 회원님의 어떠한 개인정보도 수집하지 않습니다.<br> 
+			또한, 비밀번호, 핸드폰, 이메일, 계좌정보 등 중요한 정보는 모두 암호화되어 저장합니다. 
+		</div>
+		<div class="user_info">
+			<div>
+				<div class="id_wrap">
+					<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">아이디</div>
+					<input type="text" id="user_id" name="user_id">
+					<div class="overlap">중복확인</div>
+				</div>
+				<div class="pw_wrap">
+					<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">비밀번호</div>
+					<input type="password" id="user_pw" name="user_pw">
+				</div>
+				<div class="pw_wrap">
+					<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">비밀번호 확인</div>
+					<input type="password" id="user_pw2" name="user_pw2">
+				</div>
+				<div class="nick_wrap">
+					<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">별명</div>
+					<input type="text" id="user_nick" name="user_nick">
+					<div class="overlap">중복확인</div>
+					<div class="text">※ 회원가입 후에는 임의로 수정할 수 없습니다.</div>
+				</div>
+				<div class="hp_wrap">
+					<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">핸드폰</div>
+					<select id="user_hp1" class="hp" name="user_hp1">
+						<option selected="selected">010</option>
+						<option>011</option>
+						<option>016</option>
+						<option>017</option>
+						<option>018</option>
+						<option>019</option>
+					</select>
+					<input type="text" id="user_hp2" class="hp" name="user_hp2" maxlength="4" style="width:60px; margin-right:10px;" />
+					<input type="text" id="user_hp3" class="hp" name="user_hp3" maxlength="4" style="width:60px;" />
+					<div class="overlap">중복확인</div>
+				</div>
+				<div class="pw_lost_wrap">
+					<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">비밀번호 분실시</div>
+					<div class="pw_lost_question">
+						<select id="pw_q" class="pw_q" name="pw_q">
+							<option value='가장 기억에 남는 날은?'>가장 기억에 남는 날은?&nbsp;</option><option value='가장 여행하고 싶은 나라는?'>가장 여행하고 싶은 나라는?&nbsp;</option><option value='가장 행복했던 순간은?'>가장 행복했던 순간은?&nbsp;</option><option value='감명깊게 본 영화 이름은?'>감명깊게 본 영화 이름은?&nbsp;</option><option value='기억에 남는 선생님 성함은?'>기억에 남는 선생님 성함은?&nbsp;</option><option value='기억에 남는 추억의 장소는?'>기억에 남는 추억의 장소는?&nbsp;</option><option value='나의 보물 1호는?'>나의 보물 1호는?&nbsp;</option><option value='나의 인생 좌우명은?'>나의 인생 좌우명은?&nbsp;</option><option value='내가 두번째로 존경하는 인물은?'>내가 두번째로 존경하는 인물은?&nbsp;</option><option value='내가 좋아하는 캐릭터는?'>내가 좋아하는 캐릭터는?&nbsp;</option><option value='다시 태어나면 되고 싶은것은?'>다시 태어나면 되고 싶은것은?&nbsp;</option><option value='당신의 습관은?'>당신의 습관은?&nbsp;</option><option value='당신이 사랑하는 사람은?'>당신이 사랑하는 사람은?&nbsp;</option><option value='받은 선물중 기억에 남는 독특한 선물이 있다면?'>받은 선물중 기억에 남는 독특한 선물이 있다면?&nbsp;</option><option value='부모님 성함은?'>부모님 성함은?&nbsp;</option><option value='애완동물의 이름은?'>애완동물의 이름은?&nbsp;</option><option value='어렸을적 되고 싶었던 사람은?'>어렸을적 되고 싶었던 사람은?&nbsp;</option><option value='예쁘다고 생각하는 색은?'>예쁘다고 생각하는 색은?&nbsp;</option><option value='운동화 사이즈는?'>운동화 사이즈는?&nbsp;</option><option value='유년시절 별명은?'>유년시절 별명은?&nbsp;</option><option value='읽은 책 중에서 좋아하는 구절이 있다면?'>읽은 책 중에서 좋아하는 구절이 있다면?&nbsp;</option><option value='자녀의 이름은?'>자녀의 이름은?&nbsp;</option><option value='제일 친한 친구의 이름은?'>제일 친한 친구의 이름은?&nbsp;</option><option value='좋아하는 노래는?'>좋아하는 노래는?&nbsp;</option><option value='좋아하는 스포츠는?'>좋아하는 스포츠는?&nbsp;</option><option value='좋아하는 음식은?'>좋아하는 음식은?&nbsp;</option><option value='좋아하는 이성 스타일은?'>좋아하는 이성 스타일은?&nbsp;</option><option value='첫사랑의 이름은?'>첫사랑의 이름은?&nbsp;</option><option value='첫키스 장소는?'>첫키스 장소는?&nbsp;</option><option value='초등학교 이름은?'>초등학교 이름은?&nbsp;</option><option value='출신 초등학교 이름은?'>출신 초등학교 이름은?&nbsp;</option><option value='타인이 모르는 자기만의 신체비밀이 있다면?'>타인이 모르는 자기만의 신체비밀이 있다면?&nbsp;</option><option value='태어난 고향은?'>태어난 고향은?&nbsp;</option>						</select>
+					</div>
+					<div class="pw_lost_answer">
+						<input type="text" id="pw_a" class="pw_a" name="pw_a"  placeholder="답변을 적어주세요">
+					</div>
+				</div>
+					<div class="bank_wrap">
+						<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">은행명</div>
+															<select name='bank_name' id="bank_name" class="bank_name">
+								<option>국민</option><option>우리</option><option>SC제일</option><option>경남</option><option>광주</option><option>기업</option><option>농협</option><option>대구</option><option>도이치</option><option>뱅크오브아메리카</option><option>부산</option><option>산업</option><option>상호저축은행중앙회</option><option>새마을금고</option><option>수협</option><option>신한 (구조흥포함)</option><option>신협 (신용협동조합)</option><option>외환</option><option>우체국</option><option>전북</option><option>제이피모간체이스</option><option>제주</option><option>카카오뱅크</option><option>케이뱅크</option><option>하나</option><option>한국시티(구한미)</option><option>홍콩상하이 (HSBC)</option>								</select>
+												</div>
+					<div class="banknumber_wrap">
+						<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">계좌번호</div>
+						<input type="text" id="bank_number" name="bank_number" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
+					</div>
+					<div class="bankowner_wrap">
+						<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">예금주</div>
+						<input type="text" id="bank_owner" name="bank_owner">
+					</div>
+				<div class="exchangepw_wrap">
+					<div class="sub_title" style="display:block; font-size:16px; margin:7px 0;">환전비밀번호</div>
+					<input type="password" id="exchange_pw" name="exchange_pw">
+					<div class="text">※ 환전비밀번호는 관리자도 변경이 불가능 합니다. 반드시 기억해 주세요.</div>
+				</div>
+			</div>
+		</div>
+		<div class="substance">
+			※ 타인명의 또는 가상계좌 가입시 통보없이 탈퇴 및 제제 합니다.<br>
+			※ 회원가입 후에는 보안의 이유로 계좌정보를 임의로 수정할 수 없습니다.<br>
+			※ 회원님들의 보안을 위해 타사이트(타놀이터)와 계좌를 혼용 사용 적발 시 보유금액 몰수<br />IP접근차단으로 강력하게 처리하겠습니다.  
+		</div>
+
+		<div class="bt_wrap">
+			<div class="join">가입하기</div>
+			<div class="cancel">취소</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>
